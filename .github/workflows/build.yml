@@ -11,9 +11,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v4.0.1
+        with:
+          versionSpec: "6.x.x"
+
+      - name: Determine Version
+        id: version_step
+        uses: gittools/actions/gitversion/execute@v4.0.1
 
       - name: Build and Test
         uses: ./.github/actions/build-and-test
+        with:
+          version: ${{ steps.version_step.outputs.MajorMinorPatch }}
 
       - name: Test Report
         uses: dorny/test-reporter@v2
