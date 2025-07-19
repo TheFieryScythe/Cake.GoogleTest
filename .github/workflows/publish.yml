@@ -1,4 +1,4 @@
-name: Publish to NuGet
+name: Publish toNuGet
 on:
   push:
     tags:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build and Test
-        uses: ./.github/workflows/build.yml
+        uses: ./.github/actions/build-and-test
 
       - name: Create Package
         run: dotnet pack --configuration Release --no-build --output $NUGET_PACKAGE_DIR /p:Version=${{ github.ref_name }} /p:PackageVersion=${{ github.ref_name }}

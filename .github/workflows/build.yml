@@ -9,21 +9,12 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET 9
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 9.0.x
-      - name: Setup .NET 8
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 8.0.x
-      - name: Restore Dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release
-      - name: Test
-        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --collect:"XPlat Code Coverage"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and Test
+        uses: ./.github/actions/build-and-test
+
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: ${{ always() }}
@@ -31,6 +22,7 @@ jobs:
           name: Tests
           path: TestResults/*.trx
           reporter: dotnet-trx
+
       - name: Code Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
@@ -42,6 +34,6 @@ jobs:
           hide_complexity: true
           indicators: true
           output: both
-          thresholds: '60 80'
+          thresholds: "60 80"
       - name: Output to Job Summary
         run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
