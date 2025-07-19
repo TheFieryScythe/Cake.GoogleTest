@@ -13,10 +13,13 @@ runs:
         dotnet-version: 8.0.x
 
     - name: Restore Dependencies
+      shell: bash
       run: dotnet restore
 
     - name: Build
+      shell: bash
       run: dotnet build --configuration Release
 
     - name: Test
+      shell: bash
       run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --collect:"XPlat Code Coverage"
