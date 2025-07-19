@@ -40,5 +40,5 @@ jobs:
           name: Cake.GoogleTest
           path: ${{ env.NUGET_PACKAGE_DIR }}/*.nupkg
 
-      # - name: Publish to Nuget
-      #   run: dotnet nuget push $NUGET_PACKAGE_DIR/*.nupkg --api-key $NUGET_API_KEY --source $NUGET_SOURCE
+      - name: Publish to Nuget
+        run: dotnet nuget push $NUGET_PACKAGE_DIR/*.nupkg --api-key $NUGET_API_KEY --source $NUGET_SOURCE
