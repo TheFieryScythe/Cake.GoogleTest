@@ -29,5 +29,5 @@ jobs:
         if: ${{ always() }}
         with:
           name: Tests
-          path: test-results/*.trx
+          path: Cake.GoogleTest/Cake.GoogleTest/Cake.GoogleTest.Tests/TestResults/*.trx
           reporter: dotnet-trx
