@@ -22,4 +22,4 @@ runs:
 
     - name: Test
       shell: bash
-      run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --collect:"XPlat Code Coverage"
+      run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --collect:"XPlat Code Coverage"
