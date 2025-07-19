@@ -33,17 +33,12 @@ jobs:
           path: TestResults/*.trx
           reporter: dotnet-trx
 
-      - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+      - name: Coverage Report Generator
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.4.9
         with:
-          filename: TestResults/**/coverage.cobertura.xml
-          badge: true
-          fail_below_min: true
-          format: markdown
-          hide_branch_rate: false
-          hide_complexity: true
-          indicators: true
-          output: both
-          thresholds: "60 80"
+          reports: TestResults/**/coverage.cobertura.xml
+          targetdir: CoverageReport
+          reporttypes: MarkdownSummaryGithub
+
       - name: Output to Job Summary
-        run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+        run: cat CoverageReport/coverage.cobertura.md >> $GITHUB_STEP_SUMMARY
