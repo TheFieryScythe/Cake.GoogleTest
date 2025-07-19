@@ -1,0 +1,11 @@
+﻿<Solution>
+  <Folder Name="/GitHub/">
+    <File Path="appveyor.yml" />
+    <File Path="build.bat" />
+    <File Path="build.cake" />
+    <File Path="build.ps1" />
+    <File Path="build.sh" />
+  </Folder>
+  <Project Path="Cake.GoogleTest.Tests\Cake.GoogleTest.Tests.csproj" />
+  <Project Path="Cake.GoogleTest\Cake.GoogleTest.csproj" />
+</Solution>
