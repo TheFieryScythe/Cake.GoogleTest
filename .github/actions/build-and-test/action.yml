@@ -25,7 +25,7 @@ runs:
 
     - name: Build
       shell: bash
-      run: dotnet build --configuration Release p:Version=${{ inputs.version }} /p:FileVersion=${{ inputs.version }}
+      run: dotnet build --configuration Release /p:Version=${{ inputs.version }} /p:FileVersion=${{ inputs.version }}
 
     - name: Test
       shell: bash
