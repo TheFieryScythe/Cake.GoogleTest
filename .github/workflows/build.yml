@@ -41,4 +41,5 @@ jobs:
           reporttypes: MarkdownSummaryGithub
 
       - name: Output to Job Summary
+        shell: bash
         run: cat CoverageReport/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
