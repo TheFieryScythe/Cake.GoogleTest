@@ -26,16 +26,13 @@ jobs:
           versionSpec: "6.x.x"
 
       - name: Determine Version
-        id: version_step
         uses: gittools/actions/gitversion/execute@v4.0.1
 
       - name: Build and Test
         uses: ./.github/actions/build-and-test
-        with:
-          version: ${{ steps.version_step.outputs.MajorMinorPatch }}
 
       - name: Create Package
-        run: dotnet pack --configuration Release --no-build --output $NUGET_PACKAGE_DIR /p:PackageVersion=${{ steps.version_step.outputs.fullSemVer }}
+        run: dotnet pack --configuration Release --no-build --output $NUGET_PACKAGE_DIR /p:PackageVersion=${{ env.GitVersion_FullSemVer }}
 
       - name: Upload Package Artifact
         uses: actions/upload-artifact@v4

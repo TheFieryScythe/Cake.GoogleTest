@@ -1,11 +1,4 @@
 name: Build and Test
-on:
-  workflow_call:
-    inputs:
-      version:
-        required: true
-        type: string
-
 runs:
   using: composite
   steps:
@@ -25,7 +18,7 @@ runs:
 
     - name: Build
       shell: bash
-      run: dotnet build --configuration Release /p:Version=${{ inputs.version }} /p:FileVersion=${{ inputs.version }}
+      run: dotnet build --configuration Release /p:Version=${{ env.GitVersion_MajorMinorPatch }} /p:FileVersion=${{ env.GitVersion_AssemblySemFileVer }}
 
     - name: Test
       shell: bash
