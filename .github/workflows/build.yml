@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
-        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
+        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --collect:"XPlat Code Coverage"
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: ${{ always() }}
@@ -31,3 +31,15 @@ jobs:
           name: Tests
           path: TestResults/*.trx
           reporter: dotnet-trx
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: TestResults/**/coverage.cobertura.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: '60 80'
