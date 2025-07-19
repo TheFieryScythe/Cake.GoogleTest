@@ -41,4 +41,4 @@ jobs:
           reporttypes: MarkdownSummaryGithub
 
       - name: Output to Job Summary
-        run: cat CoverageReport/coverage.cobertura.md >> $GITHUB_STEP_SUMMARY
+        run: cat CoverageReport/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
