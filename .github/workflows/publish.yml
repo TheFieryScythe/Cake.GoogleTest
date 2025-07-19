@@ -10,7 +10,7 @@ env:
   NUGET_SOURCE: ${{ vars.NUGET_SOURCE }}
 
 jobs:
-  publish:
+  Publish:
     if: github.event.base_ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
