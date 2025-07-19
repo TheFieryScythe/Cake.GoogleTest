@@ -25,7 +25,7 @@ public sealed class GoogleTestRunner
 			{
 				Arguments = settings.GetArguments(),
 				RedirectStandardOutput = false,
-				RedirectStandardError = false,
+				RedirectStandardError = false
 			});
 		process.WaitForExit();
 		return process.GetExitCode() == 0;

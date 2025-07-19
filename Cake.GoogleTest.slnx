@@ -1,4 +1,4 @@
 ﻿<Solution>
-  <Project Path="Cake.GoogleTest.Tests\Cake.GoogleTest.Tests.csproj" />
-  <Project Path="Cake.GoogleTest\Cake.GoogleTest.csproj" />
+	<Project Path="Cake.GoogleTest.Tests\Cake.GoogleTest.Tests.csproj"/>
+	<Project Path="Cake.GoogleTest\Cake.GoogleTest.csproj"/>
 </Solution>
