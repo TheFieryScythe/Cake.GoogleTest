@@ -32,7 +32,7 @@ jobs:
         uses: ./.github/actions/build-and-test
 
       - name: Create Package
-        run: dotnet pack --configuration Release --no-build --output $NUGET_PACKAGE_DIR /p:PackageVersion=${{ env.GitVersion_FullSemVer }}
+        run: dotnet pack --configuration Release --no-build --output $NUGET_PACKAGE_DIR /p:VersionPrefix=${{ env.GitVersion_MajorMinorPatch }} /p:VersionSuffix=${{ env.GitVersion_PreReleaseLabel }}
 
       - name: Upload Package Artifact
         uses: actions/upload-artifact@v4

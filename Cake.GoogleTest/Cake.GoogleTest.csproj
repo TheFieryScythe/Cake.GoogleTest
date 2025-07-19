@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>$(Version)</Version>
 		<Description>A Cake add-in providing Google test execution</Description>
 		<Authors>Martin Ballantyne</Authors>
 		<PackageProjectUrl>https://github.com/TheFieryScythe/Cake.GoogleTest</PackageProjectUrl>
