@@ -23,4 +23,11 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
-        run: dotnet test --configuration Release
+        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx"
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: ${{ always() }}
+        with:
+          name: Tests
+          path: test-results/*.trx
+          reporter: dotnet-trx
