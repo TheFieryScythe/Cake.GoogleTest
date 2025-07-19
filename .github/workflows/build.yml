@@ -23,11 +23,11 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
-        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx"
+        run: dotnet test --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: ${{ always() }}
         with:
           name: Tests
-          path: Cake.GoogleTest/Cake.GoogleTest.Tests/TestResults/*.trx
+          path: TestResults/*.trx
           reporter: dotnet-trx
