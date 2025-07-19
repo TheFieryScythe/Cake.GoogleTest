@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Cake.GoogleTest
-          path: $NUGET_PACKAGE_DIR/*.nupkg
+          path: ${{ env.NUGET_PACKAGE_DIR }}/*.nupkg
 
       # - name: Publish to Nuget
       #   run: dotnet nuget push $NUGET_PACKAGE_DIR/*.nupkg --api-key $NUGET_API_KEY --source $NUGET_SOURCE
